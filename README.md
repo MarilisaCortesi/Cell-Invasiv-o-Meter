@@ -26,7 +26,7 @@ This function analyzes and compares the results obtained with Cell-Invasiv-o-Met
 ## Syntax:
 - [areaDecrease,invasivity]= compareCellInvasivOMeasures(folderMAT,control,conditions,timepoints)
 
-Where *folderMAT* is the path of the folder containing the *.mat* files created by Cell-Invasiv-o-Meter. *control* is a string identifying the control condition, this function hyposizes the *.mat* files to follow this name scheme (**id_timepoint.mat**).
+Where *folderMAT* is the path of the folder containing the *.mat* files created by Cell-Invasiv-o-Meter. *control* is a string identifying the control condition, this function hypothesizes the *.mat* files to follow this name scheme (**id_timepoint.mat**).
 *conditions* and *timepoints* are column vectors containing, respectively, the ids of the tested conditions, and the measured temporal points.
 
 The outputs of this function are the percentual area change (normalized to the control at the first time point) and the invasivity of the population, computed as the average area decrease between two consecutive time points of each tested condition divided by the same quantity computed for the control.  
