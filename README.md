@@ -3,5 +3,9 @@ This function measures the invasivity of an *in-vitro* eukaryotic cellular cultu
 
 This Matlab software analyses the images obtained at different time points during the experiment, segments the wound and quantifies the area. The parameter that leads to the wound recognition is the **local entropy** of the image. The empty region will have a significantly lower local entropy, compared to the rest of the image (that contains the cells) and thus thresholding this image with the Otsu method allows to identify the empty areas.
 
-## Parameters:
+## Syntax:
+- [file, path]= CellInvasivOMeter(folderImages)
+- [file, path]= CellInvasivOMeter(folderImages, kernelDim)
+- [file, path]= CellInvasivOMeter(folderImages, woundPrevalence)
+- [file, path]= CellInvasivOMeter(folderImages,kernelDim, woundPrevalence)
 
