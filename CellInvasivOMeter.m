@@ -16,20 +16,24 @@
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function [file,path]=CellInvasivOMeter(folder,kernelDim,woundPrevalence)
-switch narging
+function [file,path]=CellInvasivOMeter(folder,varargin)
+switch nargin
     case 1
-        kernelDim=45
-        woundPrevalence=0.7
-     case 2
-         if varargin{2}<1 
-            kernelDim=45
-            woundPrevalence=varargin{2}
-         else
-            kernelDim=varargin{2}
-            woundPrevalence=0.7
+        kernelDim=45;
+        woundPrevalence=0.7;
+    case 2
+        if varargin{1}<1
+            kernelDim=45;
+            woundPrevalence=varargin{1};
+        else
+            kernelDim=varargin{1};
+            woundPrevalence=0.7;
         end
- end
+    case 3
+        kernelDim=varargin{1};
+        woundPrevalence=varargin{2};
+        
+end
 folderScript=pwd; 
 cd (folder)
 % change the extension if files not in .tiff format
