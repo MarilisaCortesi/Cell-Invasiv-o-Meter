@@ -16,7 +16,19 @@
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-function [file,path]=CellInvasivOMeter(folder)
+function [file,path]=CellInvasivOMeter(folder,kernelDim,woundPrevalence)
+switch narging
+    case 1
+        kernelDim=45
+        woundPrevalence=0.7
+     case 2
+         if varargin{2}<1 
+            kernelDim=45
+            woundPrevalence=varargin{2}
+         else
+            kernelDim=varargin{2}
+            woundPrevalence=0.7
+ end
 folderScript=pwd; 
 cd (folder)
 % change the extension if files not in .tiff format
@@ -39,13 +51,13 @@ images=[];
      end
  end
  [X,Y,nIm]=size(images);
- channelArea=zeros(1,nIm);
+ woundArea=zeros(1,nIm);
  for j=1:nIm
      figure()
      subplot(2,2,1)
      imshow(images(:,:,j))
      title('Raw Image')
-     J=entropyfilt(images(:,:,j),ones(45));
+     J=entropyfilt(images(:,:,j),ones(kernelDim));
      Jvect=reshape(J,1,X*Y);
      subplot(2,2,2)
      imshow(J,[])
@@ -64,21 +76,21 @@ images=[];
      end
      AreaSorted=sort(Areas,'descend');
      AreaPercent=cumsum(AreaSorted)/sum(Areas);
-     th2=find(AreaPercent>=0.7);
+     th2=find(AreaPercent>=woundPrevalence);
      mask=zeros(1024,1280);
      for i=1:th2
          index=find(Areas==AreaSorted(i));
          indices=find(label==index);
          mask(indices)=1;
-         channelArea(j)=channelArea(j)+AreaSorted(i);
+         woundArea(j)=woundArea(j)+AreaSorted(i);
      end
      out=imoverlay(images(:,:,j),mask,[1,0,0]);
      subplot(2,2,4)
      imshow(out)
-     title('Recognized channel')
+     title('Recognized wound')
  end
- disp('mean Channel Area (px)')
- disp(mean(channelArea))
+ disp('mean Wound Area (px)')
+ disp(mean(woundArea))
  disp('standard deviation')
- disp(std(channelArea))
+ disp(std(woundArea))
  [file,path]=uiputfile('*.mat','Save the output file');
