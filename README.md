@@ -9,3 +9,4 @@ This Matlab software analyses the images obtained at different time points durin
 - [file, path]= CellInvasivOMeter(folderImages, woundPrevalence)
 - [file, path]= CellInvasivOMeter(folderImages,kernelDim, woundPrevalence)
 
+Where folderImages is a string representing the path of the folder in which the images are stored (Cell-Invasiv-o-Meter hyposizes a different folder for every time point and experimental condition). kerneDim is the dimension of the kernel used during the computation of the local entropy (size of neighbourhood), the default value is 45 and it needs to be an odd number. woundPrevalence is the percentage of the empty area attributed to the wound, it is necessary to exclude small holes outside the wound (it is a number between 0 and 1 and the default value is 0.7). 
