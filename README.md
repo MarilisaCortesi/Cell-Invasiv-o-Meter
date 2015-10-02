@@ -13,4 +13,6 @@ Cell-Invasiv-o-Meter allows for technical replicates that can be analyzed simult
 Where *folderImages* is a string representing the path of the folder in which the images are stored (Cell-Invasiv-o-Meter hyposizes a different folder for every time point and experimental condition). *kernelDim* is the dimension of the kernel used during the computation of the local entropy (size of neighbourhood); the default value is 45 and it needs to be an odd number. *woundPrevalence* is the percentage of the empty area attributed to the wound and is necessary to exclude small holes outside the wound (it is a number between 0 and 1 and the default value is 0.7). 
 The workspace containing the results of the elaboration is automatically saved as a *.mat* file, a dialog window will automatically appear allowing the user to set the file's name and its destination.
 
+**See the wiki for more information**
+
 
