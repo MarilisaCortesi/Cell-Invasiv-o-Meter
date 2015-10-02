@@ -99,3 +99,4 @@ images=[];
  disp('standard deviation')
  disp(std(woundArea))
  [file,path]=uiputfile('*.mat','Save the output file');
+ save(strcat(path,file))
