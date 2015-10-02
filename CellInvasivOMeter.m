@@ -28,6 +28,7 @@ switch narging
          else
             kernelDim=varargin{2}
             woundPrevalence=0.7
+        end
  end
 folderScript=pwd; 
 cd (folder)
